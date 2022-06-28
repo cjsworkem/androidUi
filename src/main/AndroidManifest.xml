@@ -13,13 +13,13 @@
             android:name=".AddActivity"
             android:exported="false" />
         <activity
-            android:name=".DetialActivity"
+            android:name=".DetailActivity"
             android:exported="false" />
         <activity
             android:name=".ListActivity"
             android:exported="false" />
         <activity
-            android:name=".SubmitActivity"
+            android:name=".JoinActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
