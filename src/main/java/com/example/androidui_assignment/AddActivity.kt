@@ -10,13 +10,13 @@ import com.example.androidui_assignment.databinding.ActivityAddBinding
 
 // 목표 추가할 엑티비티
 class AddActivity : AppCompatActivity() {
-    lateinit var userId:String
     lateinit var binding: ActivityAddBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        userId = "123"
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -30,6 +30,7 @@ class AddActivity : AppCompatActivity() {
                 val inputData = binding.addEditView.text.toString()
 
                 val intent = intent
+                var userId = intent.getStringExtra("id")
                 if(inputData.isBlank()){
                     setResult(Activity.RESULT_CANCELED,intent)
                 } else {
@@ -42,12 +43,12 @@ class AddActivity : AppCompatActivity() {
                     }
 //                    목표를 처음 등록하는 사람이면 새로 항목을 만들어준다.
                     if (count == 0 ){
-                        db.execSQL("insert into USERS_TB(user_id,successYn) values(?,?)", arrayOf<String>(userId,"N"))
+                        db.execSQL("insert into USERS_TB(user_id,successYn) values(?,?)", arrayOf<String?>(userId,"N"))
                     }
 
-                    db.execSQL("insert into DOLIST_TB(user_id,todo,successYn) values(?,?,?)", arrayOf<String>(userId,inputData,"N"))
+                    db.execSQL("insert into DOLIST_TB(user_id,todo,successYn) values(?,?,?)", arrayOf<String?>(userId,inputData,"N"))
                     db.close()
-                    intent.putExtra("result",inputData)
+                    intent.putExtra("id",userId)
                     setResult(Activity.RESULT_OK,intent)
                 }
                 finish()

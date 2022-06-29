@@ -21,6 +21,7 @@ class MyApdater_DoList(val datas:MutableList<String>?,val datas2:MutableList<Str
         binding.itemData.text = datas!![position]
         val deldb = db.writableDatabase
         var count = 0
+        binding.image.setImageResource(R.drawable.todo)
 //        페이지를 열었을때 달성한 목표의 이미지에 이미지 적용
         val dupId = deldb.rawQuery(" select count(*) from DOLIST_TB where id = ? and successYn = 'Y'", arrayOf(datas2!![position]))
         while (dupId.moveToNext()) {
@@ -28,6 +29,13 @@ class MyApdater_DoList(val datas:MutableList<String>?,val datas2:MutableList<Str
         }
         if (count == 1 ){
             binding.image.setImageResource(R.drawable.x)
+        }
+
+        binding.deleteBtn.setOnClickListener {
+            deldb.execSQL("delete from DOLIST_TB where id = ?", arrayOf(datas2!![position]))
+            datas.removeAt(position)
+            datas2.removeAt(position)
+            notifyDataSetChanged()
         }
 
 //        버튼을 눌렀을때 바로 이미지를 바뀌게 하는 내용
