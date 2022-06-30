@@ -13,24 +13,35 @@ class MainActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_main)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val id = "123"
 
-
-        binding.submit.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this,ListActivity::class.java)
+            val id = binding.userId.text.toString()
+            intent.putExtra("id",id)
+            startActivity(intent)
+        }
+        binding.btnJoin.setOnClickListener {
             val intent = Intent(this,JoinActivity::class.java)
-            intent.putExtra("id",id)
             startActivity(intent)
         }
-        binding.submit2.setOnClickListener {
-            val intent = Intent(this,DetailActivity::class.java)
-            intent.putExtra("id",id)
-            startActivity(intent)
-        }
-        binding.submit3.setOnClickListener {
-            val intent = Intent(this,AddActivity::class.java)
-            intent.putExtra("id",id)
-            startActivity(intent)
-        }
+
+
+
+//        binding.submit.setOnClickListener {
+//            val intent = Intent(this,JoinActivity::class.java)
+//            intent.putExtra("id",id)
+//            startActivity(intent)
+//        }
+//        binding.submit2.setOnClickListener {
+//            val intent = Intent(this,DetailActivity::class.java)
+//            intent.putExtra("id",id)
+//            startActivity(intent)
+//        }
+//        binding.submit3.setOnClickListener {
+//            val intent = Intent(this,AddActivity::class.java)
+//            intent.putExtra("id",id)
+//            startActivity(intent)
+//        }
 
 
 //        val db = DBHelper(this).readableDatabase
@@ -42,5 +53,6 @@ class MainActivity : AppCompatActivity() {
 //                Log.d("myLog","아이디 값 확인 ${cursor.getString(1)}")
 //            }
 //        }
+
     }
 }

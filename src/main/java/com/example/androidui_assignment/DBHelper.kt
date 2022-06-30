@@ -10,7 +10,10 @@ class DBHelper(context: Context): SQLiteOpenHelper(context,"testdb",null,1) {
         db?.execSQL("create table MEMBER_TB(" +
                 " id integer primary key autoincrement, " +
                 " user_id unique not null," +
-                " password not null)")
+                " password not null," +
+                " name not null," +
+                " email," +
+                " phone)")
 //        할일칸에 사람 목록을 뛰워줄 테이블
         db?.execSQL("create table USERS_TB(" +
                 " id integer primary key autoincrement, " +

@@ -11,7 +11,8 @@
         android:theme="@style/Theme.BusanItAndroid">
         <activity
             android:name=".AddActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".DetailActivity"
             android:exported="false" />
@@ -20,7 +21,8 @@
             android:exported="false" />
         <activity
             android:name=".JoinActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

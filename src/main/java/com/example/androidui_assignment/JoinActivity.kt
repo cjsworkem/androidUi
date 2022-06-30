@@ -1,11 +1,14 @@
 package com.example.androidui_assignment
 
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.example.androidui_assignment.databinding.ActivityJoinBinding
 
@@ -20,32 +23,50 @@ class JoinActivity : AppCompatActivity() {
         val db:SQLiteDatabase = DBHelper(this).writableDatabase
         var count = 0
         binding.submit.setOnClickListener {
-//            입력된 id, password값 가져옴
+//            입력된 값들 가져옴
             val userId = binding.id.text.toString()
             val password = binding.password.text.toString()
-//            중복 아이디체크
-            val dupId = db.rawQuery(" select count(*) from MEMBER_TB where user_id = ?", arrayOf(userId))
-            while (dupId.moveToNext()) {
-                Log.d("myLog", "dupId ${dupId.getInt(0)}")
-                count = dupId.getInt(0)
-            }
-            if (count >= 1){
-//                중복일시 토스트메세지 띄움
-                val toast = Toast.makeText(this,"중복된 아이디입니다", Toast.LENGTH_SHORT)
-                toast.show()
+            val name = binding.name.text.toString()
+            val email = binding.email.text.toString()
+            val phone = binding.phone.text.toString()
 
-            } else {
-//                중복아니면 데이터베이스에 입력후 로그인 화면으로 돌려보냄
-                db.execSQL(" insert into MEMBER_TB(user_id,password) values (?,?) ", arrayOf<String>(userId,password))
-                val intent = Intent(this,MainActivity::class.java)
-                startActivity(intent)
+            if (name.isBlank()||password.isBlank()||name.isBlank()) {
+//                필수 입력 사항중 하나라도 비어있으면 메세지 뛰움.
+                val blankToast = Toast.makeText(this, "필수 입력 사항은 입력해주세요.", Toast.LENGTH_SHORT)
+                blankToast.show()
+            } else { // 필수 입력값이 다 채워져있다면.
+    //            중복 아이디체크
+                val dupId = db.rawQuery(" select count(*) from MEMBER_TB where user_id = ?", arrayOf(userId))
+                while (dupId.moveToNext()) {
+                    Log.d("myLog", "dupId ${dupId.getInt(0)}")
+                    count = dupId.getInt(0)
+                }
+                if (count >= 1){
+    //                중복일시 토스트메세지 띄움
+                    val dupToast = Toast.makeText(this,"중복된 아이디입니다", Toast.LENGTH_SHORT)
+                    dupToast.show()
 
-            }
+                } else {
+    //                중복아니면 데이터베이스에 입력후 로그인 화면으로 돌려보냄
+                    db.execSQL(" insert into MEMBER_TB(user_id,password,name,email,phone) values (?,?,?,?,?) ", arrayOf<String>(userId,password,name,email,phone))
+                    val intent = Intent(this,MainActivity::class.java)
+                    startActivity(intent)
 
+                }
+            } // blank if else 문
+
+        } // binding.submit.setOnClickListener
+        binding.cancel.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
         }
+    } // onCreate
 
-
-
-
+//    다른 영역터치시 키보드 내리기
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        return true
     }
+
 }

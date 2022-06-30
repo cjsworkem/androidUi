@@ -6,10 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ListActivity"
     android:orientation="vertical">
-
-    <androidx.recyclerview.widget.RecyclerView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/mainRecylerView"/>
+        android:id="@+id/detail"
+        android:text="detail"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add"
+        android:text="add"/>
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/mainRecylerView"/>-->
 
 </LinearLayout>
