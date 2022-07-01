@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="17dp">
+    <!--    모든정보 한번에 불러서 밑에서 수정할거 수정하게 되는 버전 -->
+    <!--    id는 변경 불가능하게 해서 에디트는 안넣었어요 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="회원 정보 수정"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="50dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user"
+        android:textSize="25sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_password"
+        android:hint="변경할 비밀번호" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_name"
+        android:hint="변경할 이름"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_phone"
+        android:hint="변경할 휴대폰번호"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_email"
+        android:hint="변경할 이메일"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="18dp"
+            android:backgroundTint="@color/white"
+            android:text="취 소"
+            android:id="@+id/cancel"
+            android:textColor="@color/black"
+            android:layout_marginLeft="15dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/submit"
+            android:layout_marginTop="18dp"
+            android:text="수 정"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
-            val intent = Intent(this,ListActivity::class.java)
+            val intent = Intent(this,ButtonActivity::class.java)
             val id = binding.userId.text.toString()
             intent.putExtra("id",id)
             startActivity(intent)
@@ -25,34 +25,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
-//        binding.submit.setOnClickListener {
-//            val intent = Intent(this,JoinActivity::class.java)
-//            intent.putExtra("id",id)
-//            startActivity(intent)
-//        }
-//        binding.submit2.setOnClickListener {
-//            val intent = Intent(this,DetailActivity::class.java)
-//            intent.putExtra("id",id)
-//            startActivity(intent)
-//        }
-//        binding.submit3.setOnClickListener {
-//            val intent = Intent(this,AddActivity::class.java)
-//            intent.putExtra("id",id)
-//            startActivity(intent)
-//        }
-
-
-//        val db = DBHelper(this).readableDatabase
-////        db.execSQL(" insert into DOLIST_TB(user_id,todo,successYn) values (?,?,?) ", arrayOf<String>("123","1222","N"))
-////        db.execSQL(" insert into DOLIST_TB(user_id,todo,successYn) values (?,?,?) ", arrayOf<String>("1423","122322","N"))
-//        val cursor = db.rawQuery("select * from MEMBER_TB",null)
-//        cursor.run {
-//            while (moveToNext()){
-//                Log.d("myLog","아이디 값 확인 ${cursor.getString(1)}")
-//            }
-//        }
 
     }
 }

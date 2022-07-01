@@ -9,20 +9,19 @@
     android:padding="17dp">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ㅇㅇㅇ님의 할 일"
+        android:text="게시판"
         android:textSize="28dp"
         android:textStyle="bold"
         android:id="@+id/user_id"/>
-    <TextView
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="달성률"
-        android:textSize="28dp"
-        android:textStyle="bold"
-        android:id="@+id/success"
-        android:layout_below="@id/user_id"/>
+        android:text="글쓰기"
+        android:id="@+id/write"
+        android:layout_toRightOf="@id/user_id"/>
+
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -30,6 +29,6 @@
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:id="@+id/do_list_recyclerView"
-        android:layout_below="@id/success"/>
+        android:layout_below="@id/user_id"/>
 
 </RelativeLayout>

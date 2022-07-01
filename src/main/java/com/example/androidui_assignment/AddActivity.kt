@@ -34,9 +34,9 @@ class AddActivity : AppCompatActivity() {
                 val dupId =
                     db.rawQuery(" select count(*) from USERS_TB where user_id = ?", arrayOf(userId))
                 while (dupId.moveToNext()) {
-//                    Log.d("myLog", "dupId ${dupId.getInt(0)}")
                     count = dupId.getInt(0)
                 }
+                dupId.close()
     //                    목표를 처음 등록하는 사람이면 새로 항목을 만들어준다.
                 if (count == 0) {
                     db.execSQL(

@@ -25,6 +25,13 @@ class DBHelper(context: Context): SQLiteOpenHelper(context,"testdb",null,1) {
                 " user_id not null," +
                 " todo not null," +
                 " successYn not null)")
+//        게시판 테이블
+        db?.execSQL("create table BOARD_TB(" +
+                " id integer primary key autoincrement," +
+                " user_id not null," +
+                " title not null," +
+                " content not null," +
+                " reg_date not null)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
